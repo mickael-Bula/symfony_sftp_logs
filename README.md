@@ -23,6 +23,19 @@ Dans le constructeur, il me suffit alors d'injecter `LoggerInterface` en le nomm
 
 Dès lors, les logs seront dirigés vers le fichier `var/sftp.log`.
 
+## Configuration du mailer
+
+Il faut installer le composant mailer, puis renseigner dans le `.env` user et password du service `MAILER_DSN`.
+
+```bash
+$ composer require symfony/mailer
+```
+
+Ensuite, il reste à injecter dans le constructeur de la commande le MailerInterface, puis construire le mail avec la classe `Symfony\Component\Mime\Email`.
+Une fois construit, celui-ci est expédié avec la méthode `sendEmail()`.
+
+Ne reste plus alors qu'à vérifier la réception dans le gestionnaire de mail (comme `Mailtrap`).
+
 ## Lancement du script
 
 ```bash
